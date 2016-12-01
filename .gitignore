@@ -3,3 +3,5 @@
 ################################################################################
 
 /JsonNetDemos/packages
+/JsonNetDemos/bin/Debug
+/JsonNetDemos/obj/Debug
