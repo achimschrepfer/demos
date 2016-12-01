@@ -73,6 +73,7 @@
     <Compile Include="DeserializeAbstractTypesDemo\Types\Tree.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DeserializeAbstractTypesDemo\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
