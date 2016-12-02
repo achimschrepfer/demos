@@ -6,14 +6,12 @@ When deserializing a JSON structure into .NET classes that have abstract base
 classes the deserializer throws the following exception:
 
 ```
-Newtonsoft.Json.JsonSerializationException: Could not create an instance of type *typename*. Type is an interface or abstract class and cannot be instantiated.
+Newtonsoft.Json.JsonSerializationException: Could not create an instance of type *typename*.
+Type is an interface or abstract class and cannot be instantiated.
 ```
 
 Obviously because it cannot determine the concrete type to use for instantiation. If you have just *one* concrete type you'll
-go fine using http://www.newtonsoft.com/json/help/html/customcreationconverter.htm.
-
-If you have multiple conrete types a decision has to be made during the deserialization
-process. 
+go fine using http://www.newtonsoft.com/json/help/html/customcreationconverter.htm. If you have *multiple* conrete types a decision has to be made during the deserialization process. 
 
 ## Solution
 
@@ -41,5 +39,13 @@ public class PlantCreationConverterWithBaseClass : TypePropertyCreationConverter
         }
     }
  ```
+The converter has then to be used during the deserialization process like so:
 
- 
+```
+var deserializedObject = JsonConvert.DeserializeObject<List<Plant>>(json, 
+        new PlantCreationConverterWithBaseClass());
+```
+
+## About the demo
+
+The demo is made with Visual Studio 2015, written in C# in form of unit tests and uses XUnit as test framework.
